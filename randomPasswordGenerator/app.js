@@ -2,7 +2,7 @@ const express = require('express')
 const bp = require('body-parser')
 
 const app = express()
-const port = 3000
+const port = 3001
 
 app.use(bp.json())
 app.use(bp.urlencoded({ extended: true }))
@@ -31,9 +31,9 @@ app.post('/password/generate', (req, res) => {
     if (number) {characters += c_number; }
 
     // Include Lowercase Characters:( e.g. abcdefgh )
-    const lowecase = req.body.lowecase;
-    const c_lowecase = "abcdefghijklmnopqrstuvwxyz"
-    if (lowecase) {characters += c_lowecase; }
+    const lowercase = req.body.lowercase;
+    const c_lowercase = "abcdefghijklmnopqrstuvwxyz"
+    if (lowercase) {characters += c_lowercase; }
 
     // Include Uppercase Characters:( e.g. ABCDEFGH )
     const uppercase = req.body.uppercase;
@@ -52,7 +52,7 @@ app.post('/password/generate', (req, res) => {
 
     password = '';
 
-    for (let index = 0; index <= pass_length; index++) {
+    for (let index = 1; index <= pass_length; index++) {
         password += random_character(characters)
     }
 
